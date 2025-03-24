@@ -1,0 +1,193 @@
+body {
+    background: radial-gradient(circle at center, #2c3e50, #1a1a2e);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: white;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.calculator {
+    background: #272b33;
+    border-radius: 35px;
+    padding: 30px 25px;
+    width: 290px;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        inset 0 2px 40px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.85em;
+    margin-bottom: 25px;
+    letter-spacing: 4px;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.display {
+    background: #1a1d22;
+    color: white;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: right;
+    font-size: 2em;
+    border-radius: 20px;
+    height: 35px;
+    line-height: 35px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.buttons {
+    display: grid;
+    gap: 15px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+button {
+    width: 100%;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 18px;
+    font-size: 1.3em;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    position: relative;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0.07),
+        rgba(255, 255, 255, 0));
+    border-radius: 18px 18px 0 0;
+    pointer-events: none;
+}
+
+.digit {
+    background: #343842;
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.2),
+        inset 0 2px 3px rgba(255, 255, 255, 0.06);
+}
+
+.operator {
+    background: #ff9f0a;
+    font-size: 1.5em;
+    box-shadow: 
+        0 4px 10px rgba(255, 159, 10, 0.3),
+        inset 0 2px 3px rgba(255, 255, 255, 0.2);
+}
+
+.equals {
+    background: #4cd964;
+    box-shadow: 
+        0 4px 10px rgba(76, 217, 100, 0.3),
+        inset 0 2px 3px rgba(255, 255, 255, 0.2);
+}
+
+.clear, .power, .factorial, .toggle {
+    background: #2c3241;
+    font-size: 1.1em;
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.2),
+        inset 0 2px 3px rgba(255, 255, 255, 0.06);
+}
+
+.decimal {
+    background: #2a2d34;
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Operator specific styles */
+.operator:nth-child(4) { /* Division */
+    font-size: 1.6em;
+    font-weight: 200;
+}
+
+.operator:nth-child(3) { /* Multiplication */
+    font-size: 1.5em;
+}
+
+/* Special function styles */
+.power, .factorial {
+    font-family: serif;
+    font-style: italic;
+    letter-spacing: -1px;
+}
+
+.history {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.history h3 {
+    margin-top: 0;
+    color: #1a73e8;
+}
+
+#historyList {
+    list-style: none;
+    padding: 0;
+}
+
+#historyList li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    button {
+        transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                    filter 0.2s ease,
+                    box-shadow 0.2s ease;
+    }
+    
+    button:hover {
+        animation: pulse 2s infinite;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+}
